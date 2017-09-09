@@ -1,14 +1,14 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var telephone = sequelize.define('telephone', {
+  var Telephone = sequelize.define('Telephone', {
     name: DataTypes.STRING,
     number: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        Telephone.belongsTo(models.User);
       }
     }
   });
-  return telephone;
+  return Telephone;
 };
