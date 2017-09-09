@@ -12,6 +12,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   },{
+
+    //use bcrypt to encrypt passwords
     instanceMethods: {
         generateHash: function(password) {
             return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);

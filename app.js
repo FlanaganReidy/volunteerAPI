@@ -11,22 +11,24 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
+//will switch this to mustache
 app.get('/api/', function(req, res) {
   res.json({
     'status': 'success'
   })
 })
 
+//make email and name
 app.post('/api/user/register', function(req, res) {
   const user = models.User.build({
     email: req.body.email,
     name: req.body.name
   })
-
+//update password field by running it through the generateHash method (does not work)
   user.update({
       passwordHash: user.generateHash(req.body.password)
     })
-
+//save new user
     user.save().then((results) => {
       res.json({
         'status': 'success',
